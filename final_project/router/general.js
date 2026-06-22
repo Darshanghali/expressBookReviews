@@ -98,6 +98,22 @@ public_users.post("/register", (req, res) => {
 // ASYNC/AWAIT ENDPOINTS (TASKS 10-13)
 // ==========================================
 
+//Task 5
+// Task 5: Get book reviews based on ISBN
+public_users.get('/review/:isbn', function (req, res) {
+    const isbn = req.params.isbn;
+        
+            // Simulating database lookup from your books object
+                const book = books[isbn];
+                    
+                        if (book) {
+                                // Returns the nested reviews dictionary e.g., { "username": "review text" }
+                                        return res.status(200).send(JSON.stringify(book.reviews, null, 4));
+                                            } else {
+                                                    return res.status(404).json({ message: "Book not found" });
+                                                        }
+                                                        });
+
 // Task 10: Get the list of books available in the shop
 public_users.get('/', async function (req, res) {
     try {
